@@ -31,16 +31,27 @@
         <div class="card card-login mx-auto mt-5">
             <div class="card-header">Đăng nhập</div>
             <div class="card-body">
-                <form>
+                @*@using (Html.BeginForm("Login", "User", FormMethod.Post))
+        {<h2>Đăng Nhập</h2>
+            <p style="color:red">@ViewBag.thongbao</p>
+            <p>Email</p>
+            <p>@Html.TextBox("txtEmail")</p>
+            <p>Mật khẩu</p>
+            <p>@Html.Password("txtMatKhau")</p>
+            <p><input type="submit" name="btnsubmit" value="Đăng Nhập" /></p>
+        }*@
+                @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
                     <div class="form-group">
                         <div class="form-label-group">
-                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+                            <input type="email" id="inputEmail" name="txtEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
                             <label for="inputEmail">Địa chỉ Email</label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-label-group">
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+                            <input type="password" id="inputPassword" name="txtMatKhau" class="form-control" placeholder="Password" required="required">
                             <label for="inputPassword">Mật khẩu</label>
                         </div>
                     </div>
@@ -52,11 +63,12 @@
                             </label>
                         </div>
                     </div>
-                    <a class="btn btn-primary btn-block" href="@Url.Action("Index","User")">Đăng nhập</a>
-                </form>
+                    <p><input type="submit" name="btnsubmit" value="Đăng Nhập" class="btn btn-primary btn-block" /></p>
+                    @*<a class="btn btn-primary btn-block" href="@Url.Action("Index", "User")">Đăng nhập</a>*@
+                }
                 <div class="text-center">
-                    <a class="d-block small mt-3" href="@Url.Action("RegisterPass","User")">Đăng ký</a>
-                    <a class="d-block small" href="@Url.Action("ForgotPass","User")">Quên mật khẩu?</a>
+                    <a class="d-block small mt-3" href="#">Đăng ký</a>
+                    <a class="d-block small" href="#">Quên mật khẩu?</a>
                 </div>
             </div>
         </div>

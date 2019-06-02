@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Comment";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- DataTables Example -->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Chi tiết bình luận
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Người dùng</th>
+                        <th>Bình luận</th>
+                        <th>Thời gian</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Người dùng</th>
+                        <th>Bình luận</th>
+                        <th>Thời gian</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var i in @ViewBag.cmt)
+                    {
+
+                        <tr>
+                            <td>@i.PRODUCT.name</td>
+                            <td>@i.account.email</td>
+                            <td>@i.comment</td>
+                            <td>@i.created_at</td>
+                            <td><a onclick="return confirm('Bạn có chắc muốn xóa không?');" href="@Url.Action("XoaCmt", "User", new {@name=i.account.name ,@idcmt=i.id, @id=i.account.id})" class="btn btn-danger"><i class="fas fa-trash"></i>&nbsp;&nbsp;Xóa</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

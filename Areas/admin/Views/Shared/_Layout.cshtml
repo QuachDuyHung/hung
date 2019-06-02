@@ -1,4 +1,4 @@
-﻿
+﻿@using BTL_NET2.Models;
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,11 +36,17 @@
         <!-- Navbar Search -->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                @*<input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">*@
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search"></i>
-                    </button>
+                    @*<button class="btn btn-primary" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>*@
+                    <a href="@Url.Action("Info","User")">
+                        @{
+                            account user = (account)Session["TaiKhoan"];
+                            <span>Xin chào Admin:</span> @user.name;
+                        }
+                    </a>
                 </div>
             </div>
         </form>
@@ -104,13 +110,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Products")">              
+                <a class="nav-link" href="@Url.Action("Index","Products")">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Sản phẩm</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Bill")">                    
+                <a class="nav-link" href="@Url.Action("Index","Bill")">
                     <i class="fas fa-file-invoice-dollar fa-fw"></i>
                     <span>Hóa đơn</span>
                 </a>
@@ -118,16 +124,16 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>User</span>
+                    <span>Admin</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                     @*<h6 class="dropdown-header">Login Screens:</h6>*@
-                    <a class="dropdown-item" href="@Url.Action("Index","User")">Thông tin</a>
-                    <a class="dropdown-item" href="@Url.Action("ChangePass","User")">Đổi mật khẩu</a>
+                    <a class="dropdown-item" href="@Url.Action("Info","User")">Thông tin</a>
+                    @*<a class="dropdown-item" href="@Url.Action("ChangePass","User")">Đổi mật khẩu</a>*@
                     @*<div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Other Pages:</h6>
-                <a class="dropdown-item" href="404.html">404 Page</a>
-                <a class="dropdown-item" href="blank.html">Blank Page</a>*@
+                        <h6 class="dropdown-header">Other Pages:</h6>
+                        <a class="dropdown-item" href="404.html">404 Page</a>
+                        <a class="dropdown-item" href="blank.html">Blank Page</a>*@
                 </div>
             </li>
         </ul>

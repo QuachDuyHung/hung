@@ -1,0 +1,26 @@
+﻿@using BTL_NET2.Models;
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 col-sm-push-3">
+            <h2>Thông tin Admin</h2>
+            <hr />
+            @{
+                account user = (account)Session["TaiKhoan"];
+                <p><b>Họ Tên: </b>  @user.name</p>
+                <p><b>Địa Chỉ email: </b>  @user.email</p>
+                <p><b>Mật khẩu: </b> @user.password</p>
+                <p><b>Địa chỉ: </b> @user.address</p>
+                <p><b>Số điện thoại: </b> @user.phone</p>
+                <p><b>Ngày Sinh: </b> @user.created_at</p>
+            }
+                <br />
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary">OK</a>
+        </div>        
+    </div>
+</div>
+

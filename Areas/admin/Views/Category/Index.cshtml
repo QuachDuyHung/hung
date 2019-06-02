@@ -4,5 +4,68 @@
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Xin chào bạn đến với thể loại</h2>
+<!-- DataTables Example -->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Thể loại
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Loại</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày nhập</th>
+                        <th>Cập nhật cuối</th>
+                        <th>Chi tiết</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>STT</th>
+                        <th>Loại</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày nhập</th>
+                        <th>Cập nhật cuối</th>
+                        <th>Chi tiết</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var i in ViewBag.loai)
+                    {
+                        <tr>
+                            <td>@i.id</td>
+                            <td>@i.name</td>
+                            <td>
+                                @{
+                                    if (i.status == 1)
+                                    {
+                                        <span>Còn</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Hết</span>
+                                    }
+                                }
+                            </td>
+                            <td>@i.created_at</td>
+                            <td>@i.update_at</td>
+                            <td>
+                                <a href="@Url.Action("DS_theloai", "Category", new {@idTheLoai=i.id})" class="btn btn-primary">Danh sách</a>
+                                &nbsp;&nbsp;
+                                <a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="@Url.Action("Xoa_theloai", "Category", new {@idTheLoai=i.id})" class="btn btn-danger"><i class="fas fa-trash"></i>&nbsp;&nbsp;Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            <a href="@Url.Action("Them_TheLoai", "Category")" class="btn btn-danger"><i class="fas fa-plus-circle"></i>&nbsp;&nbsp;Thêm mới</a>
+        </div>
+    </div>    
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
 
