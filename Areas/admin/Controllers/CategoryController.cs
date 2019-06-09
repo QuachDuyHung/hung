@@ -38,6 +38,10 @@ namespace BTL_NET2.Areas.admin.Controllers
         [HttpPost]
         public ActionResult Them_TheLoai(category theloai)
         {
+            category ca = new category();
+            ca.created_at = DateTime.Now;
+            ca.update_at = DateTime.Now;
+            data.categories.Add(ca);
             data.categories.Add(theloai);
             data.SaveChanges();
 
@@ -73,7 +77,7 @@ namespace BTL_NET2.Areas.admin.Controllers
             sua.category.name = sLoai;
             sua.description = sMota;
             sua.status = sStatus;
-            sua.created_at = DateTime.Today;
+            sua.created_at = DateTime.Now;
 
             UpdateModel(sua);
             data.SaveChanges();

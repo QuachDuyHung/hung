@@ -16,7 +16,7 @@ namespace BTL_NET2.Areas.admin.Controllers
         public ActionResult Index()
         {
             var user = (from i in data.accounts select i).ToList();
-            ViewBag.user = user;
+           ViewBag.user = user;
             return View();
         }
 

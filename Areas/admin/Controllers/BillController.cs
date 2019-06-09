@@ -32,12 +32,14 @@ namespace BTL_NET2.Areas.admin.Controllers
         public ActionResult Xoa_bill(int idBill)
         {
             bill bi = data.bills.SingleOrDefault(n => n.id == idBill);
+            //billdetail bill = data.billdetails.SingleOrDefault(n => n.billID == idBill);
             if (bi == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
             data.bills.Remove(bi);
+            //data.billdetails.Remove(bill);
             data.SaveChanges();
             return RedirectToAction("Index");
         }

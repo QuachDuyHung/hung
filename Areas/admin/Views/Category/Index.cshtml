@@ -17,7 +17,7 @@
                     <tr>
                         <th>STT</th>
                         <th>Loại</th>
-                        <th>Trạng thái</th>
+                        <th>Số lượng</th>
                         <th>Ngày nhập</th>
                         <th>Cập nhật cuối</th>
                         <th>Chi tiết</th>
@@ -27,7 +27,7 @@
                     <tr>
                         <th>STT</th>
                         <th>Loại</th>
-                        <th>Trạng thái</th>
+                        <th>Số lượng</th>
                         <th>Ngày nhập</th>
                         <th>Cập nhật cuối</th>
                         <th>Chi tiết</th>
@@ -39,7 +39,7 @@
                         <tr>
                             <td>@i.id</td>
                             <td>@i.name</td>
-                            <td>
+                            @*<td>
                                 @{
                                     if (i.status == 1)
                                     {
@@ -50,7 +50,8 @@
                                         <span>Hết</span>
                                     }
                                 }
-                            </td>
+                            </td>*@
+                            <td>@i.PRODUCTs.Count</td>
                             <td>@i.created_at</td>
                             <td>@i.update_at</td>
                             <td>

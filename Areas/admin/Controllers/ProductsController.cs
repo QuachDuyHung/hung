@@ -62,7 +62,7 @@ namespace BTL_NET2.Areas.admin.Controllers
             sua.category.name = sLoai;
             sua.description = sMota;
             sua.status = sStatus;
-            sua.created_at = DateTime.Today;
+            sua.created_at = DateTime.Now;
 
             UpdateModel(sua);
             data.SaveChanges();
@@ -73,12 +73,14 @@ namespace BTL_NET2.Areas.admin.Controllers
         public ActionResult Xoa_sanpham(int idSP)
         {
             PRODUCT pro = data.PRODUCTs.SingleOrDefault(n => n.id == idSP);
+            //feedback fe = data.feedbacks.FirstOrDefault(n => n.productid == idSP);
             if (pro == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
             data.PRODUCTs.Remove(pro);
+            //data.feedbacks.Remove(fe);
             data.SaveChanges();
             return RedirectToAction("Index");
         }
